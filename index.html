@@ -1,23 +1,70 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your Hard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section id="program">
-        <h2>Program</h2>
-        <p>We don't attack everything at once. We build one pillar at a time so each reinforces the next.</p>
-        <p>Delivered by a clinically trained diagnostician who has lived this exact transformation.</p>
-        <h3>Testimonials</h3>
-        <p>1) "I came in feeling completely lost after my divorce. By day 30 I had more clarity about who I was than I'd had in a decade. By day 90 I was unrecognisable — in the best possible way."
-        </p>
-        <p>2) "I was the guy who had it all together on the outside. Corner office, good salary, everyone thought I was crushing it. Inside I was hollow. This program gave me myself back."
-        </p>
-        <p>3) "The fitness piece alone was worth it. But the identity work in Phase 1 changed how I show up at work, with my kids, with myself. I lead differently now. I can feel it."
-        </p>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>The discovery call is 30 minutes. It's not a sales pitch — it's a diagnosis. I'll ask you the real questions. You'll leave knowing exactly what's keeping you stuck and whether this program is right for you.</p>
-    </section>
+    <header>
+        <h1>Choose Your Hard</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We believe that hard choices reveal the strength and resilience within ourselves. Our mission is to guide you through the tough decisions in life, empowering you to choose your own path.</p>
+        </section>
+        <section id="programs">
+            <h2>Our Programs</h2>
+            <article>
+                <h3>Program 1: Overcoming Obstacles</h3>
+                <p>This program focuses on helping individuals identify their challenges and develop strategies to overcome them.</p>
+            </article>
+            <article>
+                <h3>Program 2: Building Resilience</h3>
+                <p>In this program, participants learn techniques to enhance their resilience and face life's challenges head-on.</p>
+            </article>
+            <article>
+                <h3>Program 3: Mindful Decision-Making</h3>
+                <p>This program teaches participants mindfulness techniques that assist in making informed and thoughtful decisions.</p>
+            </article>
+        </section>
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <blockquote>
+                <p>"This program changed my life! I learned to face my challenges with courage and resilience." - Client A</p>
+            </blockquote>
+            <blockquote>
+                <p>"The support and guidance I received were invaluable. I now feel empowered to make tough decisions." - Client B</p>
+            </blockquote>
+            <blockquote>
+                <p>"I can’t believe how much I’ve grown through this program. It was exactly what I needed!" - Client C</p>
+            </blockquote>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Choose Your Hard. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -3,68 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose Your Hard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Choose Your Hard - Men's Transformation Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf7f2;
+            --text: #1a1a1a;
+            --accent: #c4773a;
+            --light-gray: #e8e4df;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: #a85c2a;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 80px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #a85c2a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+            border-radius: 8px;
+            padding: 4rem;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .credential-card {
+            padding: 1.5rem;
+            background-color: var(--bg);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .credential-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Program Section */
+        .program {
+            text-align: center;
+        }
+
+        .program h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            text-align: left;
+        }
+
+        .phase h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .phase p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .phase ul {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 0;
+        }
+
+        .phase li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+        }
+
+        .phase li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Investment Section */
+        .investment {
+            background-color: white;
+            border-radius: 8px;
+            padding: 4rem;
+        }
+
+        .investment h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .investment-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(196, 119, 58, 0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin: 1rem 0;
+            font-weight: 700;
+        }
+
+        .price-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pricing-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .testimonial-role {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            border-radius: 8px;
+            padding: 4rem;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(196, 119, 58, 0.1);
+        }
+
+        .form-group button {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #a85c2a;
+        }
+
+        /* Email Signup */
+        .email-signup {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: var(--bg);
+            border-radius: 8px;
+        }
+
+        .email-signup h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-signup-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .email-signup-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+        }
+
+        .email-signup-form button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .email-signup-form button:hover {
+            background-color: #a85c2a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .about,
+            .investment,
+            .contact {
+                padding: 2rem 1rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Choose Your Hard</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>We believe that hard choices reveal the strength and resilience within ourselves. Our mission is to guide you through the tough decisions in life, empowering you to choose your own path.</p>
-        </section>
-        <section id="programs">
-            <h2>Our Programs</h2>
-            <article>
-                <h3>Program 1: Overcoming Obstacles</h3>
-                <p>This program focuses on helping individuals identify their challenges and develop strategies to overcome them.</p>
-            </article>
-            <article>
-                <h3>Program 2: Building Resilience</h3>
-                <p>In this program, participants learn techniques to enhance their resilience and face life's challenges head-on.</p>
-            </article>
-            <article>
-                <h3>Program 3: Mindful Decision-Making</h3>
-                <p>This program teaches participants mindfulness techniques that assist in making informed and thoughtful decisions.</p>
-            </article>
-        </section>
-        <section id="testimonials">
-            <h2>Testimonials</h2>
-            <blockquote>
-                <p>"This program changed my life! I learned to face my challenges with courage and resilience." - Client A</p>
-            </blockquote>
-            <blockquote>
-                <p>"The support and guidance I received were invaluable. I now feel empowered to make tough decisions." - Client B</p>
-            </blockquote>
-            <blockquote>
-                <p>"I can’t believe how much I’ve grown through this program. It was exactly what I needed!" - Client C</p>
-            </blockquote>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Choose Your Hard</div>
+        <ul class="nav-links">
+            <li><a href="#program">Program</a></li>
+            <li><a href="#investment">Investment</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://calendly.com/your-link" class="nav-cta">Book a Call</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Change is hard.<br>Being lost is hard.<br><span style="color: var(--accent);">Choose your hard.</span></h1>
+        <p>A 90-day transformation program designed for professional men 25-55 ready to rebuild their identity and reclaim their power.</p>
+        <div class="hero-buttons">
+            <a href="https://calendly.com/your-link" class="btn btn-primary">Book a Free Consultation</a>
+            <a href="#contact" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>My Story</h2>
+        <p>I'm a clinical pharmacist who faced my own breaking point. After a major life crisis, I had to completely rebuild—my identity, my confidence, my direction. In under 6 months, I transformed from lost to clear. From stuck to unstoppable.</p>
+        <p>That's when I realized: transformation isn't complicated. It requires clarity, accountability, and a system that works. I created this program to help other men do what I did—rebuild faster, stronger, and with purpose.</p>
+        
+        <div class="credentials">
+            <div class="credential-card">
+                <h3>Clinical Pharmacist</h3>
+                <p>Healthcare professional with deep expertise in health & performance</p>
+            </div>
+            <div class="credential-card">
+                <h3>Transformation Coach</h3>
+                <p>Specialized in identity reconstruction and life redesign</p>
+            </div>
+            <div class="credential-card">
+                <h3>90-Day Specialist</h3>
+                <p>Proven track record of rapid, sustainable change</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="program" id="program">
+        <h2>The 90-Day Transformation</h2>
+        <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">Three integrated phases targeting your mental, emotional, and physical foundation</p>
+        
+        <div class="phases">
+            <div class="phase">
+                <h3>Phase 1: Mental</h3>
+                <p>Clarity starts here. We rebuild your mindset, eliminate limiting beliefs, and establish the mental framework for lasting change.</p>
+                <ul>
+                    <li>Identify your core values</li>
+                    <li>Release mental blocks</li>
+                    <li>Create your vision</li>
+                    <li>Build your identity narrative</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 2: Emotional</h3>
+                <p>Feelings drive behavior. We process emotions, build resilience, and create emotional stability so change sticks.</p>
+                <ul>
+                    <li>Process past patterns</li>
+                    <li>Build emotional awareness</li>
+                    <li>Develop resilience</li>
+                    <li>Master difficult emotions</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Phase 3: Physical</h3>
+                <p>The body anchors the mind. We create sustainable habits around fitness, nutrition, and energy that reinforce everything above.</p>
+                <ul>
+                    <li>Design your movement practice</li>
+                    <li>Optimize nutrition</li>
+                    <li>Build daily rituals</li>
+                    <li>Create long-term habits</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section class="investment" id="investment">
+        <h2>Investment</h2>
+        <p class="investment-subtitle">Done-with-you coaching for serious men ready to change</p>
+        
+        <div class="pricing-options">
+            <div class="pricing-card">
+                <h3>Single Payment</h3>
+                <div class="price">$3,000</div>
+                <p class="price-description">Full 90-day program, paid in full</p>
+                <ul>
+                    <li>Weekly 1-on-1 coaching sessions</li>
+                    <li>Custom 90-day roadmap</li>
+                    <li>Private community access</li>
+                    <li>24/7 messaging support</li>
+                    <li>Lifetime resources</li>
+                </ul>
+                <a href="https://calendly.com/your-link" class="btn btn-primary">Book Your Spot</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Payment Plan</h3>
+                <div class="price">6 × $500</div>
+                <p class="price-description">Split into 6 monthly payments</p>
+                <ul>
+                    <li>Weekly 1-on-1 coaching sessions</li>
+                    <li>Custom 90-day roadmap</li>
+                    <li>Private community access</li>
+                    <li>24/7 messaging support</li>
+                    <li>Lifetime resources</li>
+                </ul>
+                <a href="https://calendly.com/your-link" class="btn btn-primary">Book Your Spot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <h2>Real Transformations</h2>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="testimonial-text">"I came in feeling lost after my divorce. In 90 days, I had clarity on who I wanted to be, landed a promotion, and started dating with intention. This program changed my life."</div>
+                <div class="testimonial-author">Marcus T.</div>
+                <div class="testimonial-role">Executive, Age 42</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-text">"The mental work was worth it alone, but the fact that I also lost 25 lbs, quit drinking, and rebuilt my relationship with my kids... this is the real deal."</div>
+                <div class="testimonial-author">James R.</div>
+                <div class="testimonial-role">Entrepreneur, Age 38</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-text">"I was stuck in a cycle of self-sabotage. The coaching helped me see my patterns and actually break them. I'm not the same person I was 3 months ago."</div>
+                <div class="testimonial-author">David K.</div>
+                <div class="testimonial-role">Sales Manager, Age 35</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Ready to Transform?</h2>
+        
+        <div class="contact-wrapper">
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Tell me about your situation</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Send Message</button>
+                </div>
             </form>
-        </section>
-    </main>
+
+            <div class="email-signup">
+                <h3>Get Free Resources</h3>
+                <p>Join 500+ men receiving weekly transformation insights</p>
+                <form class="email-signup-form" onsubmit="handleEmailSignup(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Choose Your Hard. All rights reserved.</p>
+        <div class="footer-content">
+            <h3>Choose Your Hard</h3>
+            <p>90-Day Men's Transformation Coaching</p>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/your-handle" target="_blank">Instagram</a>
+                <a href="https://calendly.com/your-link" target="_blank">Book a Call</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">© 2026 Choose Your Hard. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! I will get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        function handleEmailSignup(event) {
+            event.preventDefault();
+            alert('Thanks for subscribing! Check your email for the welcome guide.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
